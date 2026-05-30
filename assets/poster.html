@@ -6,76 +6,73 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 540px; height: 720px; }
   body {
-    font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans GB", sans-serif;
     background:
-      radial-gradient(120% 80% at 80% 8%, rgba(110,64,201,0.42) 0%, rgba(110,64,201,0) 55%),
-      radial-gradient(90% 70% at 12% 92%, rgba(199,125,255,0.22) 0%, rgba(199,125,255,0) 50%),
+      radial-gradient(120% 80% at 80% 6%, rgba(110,64,201,0.42) 0%, rgba(110,64,201,0) 55%),
+      radial-gradient(90% 70% at 12% 94%, rgba(199,125,255,0.22) 0%, rgba(199,125,255,0) 50%),
       linear-gradient(157deg, #0b0d17 0%, #15102b 55%, #1a0f2e 100%);
     color: #fff;
     width: 540px; height: 720px;
-    padding: 46px 44px 38px;
+    padding: 38px 38px 26px;
     display: flex; flex-direction: column;
     position: relative;
     overflow: hidden;
   }
-  /* faint dotted grid texture */
   body::before {
     content: ""; position: absolute; inset: 0;
     background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
     background-size: 26px 26px; opacity: 0.6; pointer-events: none;
   }
   .kicker {
-    font-size: 14px; letter-spacing: 3.5px; text-transform: uppercase;
-    color: #b9a6e8; font-weight: 700; display: flex; align-items: center; gap: 9px;
+    font-size: 12.5px; letter-spacing: 3px; text-transform: uppercase;
+    color: #b9a6e8; font-weight: 700; display: flex; align-items: center; gap: 8px;
   }
-  .kicker .dot { width: 7px; height: 7px; border-radius: 50%; background: #c77dff; box-shadow: 0 0 12px #c77dff; }
+  .kicker .dot { width: 6px; height: 6px; border-radius: 50%; background: #c77dff; box-shadow: 0 0 12px #c77dff; }
 
-  .title { margin-top: 30px; }
-  .title .skill { font-size: 70px; font-weight: 800; letter-spacing: -1px; line-height: 1.02; }
+  .title { margin-top: 14px; }
+  .title .skill { font-size: 52px; font-weight: 800; letter-spacing: -1px; line-height: 1.02; }
   .title .arrow {
-    font-size: 70px; font-weight: 800; line-height: 1.02;
+    font-size: 31px; font-weight: 800; line-height: 1.18;
     background: linear-gradient(90deg, #8a63f4, #c77dff);
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
-  .subtitle { margin-top: 20px; font-size: 21px; font-weight: 600; color: #e7defb; line-height: 1.5; }
+  .subtitle { margin-top: 13px; font-size: 17.5px; font-weight: 600; color: #e7defb; line-height: 1.5; }
   .subtitle b { color: #fff; }
 
-  /* DAG motif */
-  .dag { margin: 26px 0 22px; }
+  .dag { margin: 14px 0 12px; }
 
-  .cards { display: flex; flex-direction: column; gap: 13px; }
+  .cards { display: flex; flex-direction: column; gap: 10px; }
   .card {
     background: linear-gradient(180deg, rgba(36,27,64,0.85), rgba(28,23,51,0.85));
-    border: 1px solid #3a2f5c; border-radius: 16px;
-    padding: 15px 18px; display: flex; align-items: center; gap: 15px;
-    backdrop-filter: blur(2px);
+    border: 1px solid #3a2f5c; border-radius: 14px;
+    padding: 12px 16px; display: flex; align-items: center; gap: 13px;
   }
   .card .emoji {
-    width: 44px; height: 44px; flex: 0 0 44px; border-radius: 12px;
+    width: 40px; height: 40px; flex: 0 0 40px; border-radius: 11px;
     background: radial-gradient(circle at 35% 30%, #6e40c9, #3a2f5c);
-    display: flex; align-items: center; justify-content: center; font-size: 23px;
+    display: flex; align-items: center; justify-content: center; font-size: 21px;
     box-shadow: inset 0 0 0 1px rgba(160,123,240,0.5);
   }
-  .card .txt b { font-size: 19px; font-weight: 700; color: #fff; }
-  .card .txt p { font-size: 13.5px; color: #a99cce; margin-top: 3px; line-height: 1.35; }
+  .card .txt b { font-size: 17.5px; font-weight: 700; color: #fff; }
+  .card .txt p { font-size: 12.5px; color: #a99cce; margin-top: 2px; line-height: 1.3; }
+
+  .npx {
+    margin-top: 13px;
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 12.5px; color: #c8bbf0;
+    background: rgba(10,8,20,0.6); border: 1px solid #34284f; border-radius: 9px;
+    padding: 10px 13px; letter-spacing: 0.2px;
+  }
+  .npx .p { color: #6f6291; }
 
   .footer {
-    margin-top: auto; padding-top: 20px;
+    margin-top: auto; padding-top: 16px;
     border-top: 1px solid rgba(110,64,201,0.35);
     display: flex; align-items: center; justify-content: space-between;
   }
-  .footer .repo { font-size: 15px; font-weight: 700; color: #fff; }
+  .footer .repo { font-size: 14px; font-weight: 700; color: #fff; }
   .footer .repo span { color: #8a63f4; }
-  .footer .by { font-size: 12.5px; color: #7e72a6; letter-spacing: 0.3px; }
-
-  .npx {
-    margin-top: 16px;
-    font-family: "SF Mono", ui-monospace, Menlo, monospace;
-    font-size: 13px; color: #c8bbf0;
-    background: rgba(10,8,20,0.6); border: 1px solid #34284f; border-radius: 10px;
-    padding: 11px 14px; letter-spacing: 0.2px;
-  }
-  .npx .p { color: #6f6291; }
+  .footer .by { font-size: 12px; color: #7e72a6; letter-spacing: 0.3px; }
 </style>
 </head>
 <body>
@@ -89,30 +86,31 @@
 
   <div class="subtitle">把你的 AI 技能，<b>自动编译成多智能体工作流</b><br/>并行跑 · 自校验 · 含金量拉满</div>
 
-  <!-- mini DAG: 1 source -> 3 parallel -> 1 merge -->
   <div class="dag">
-    <svg width="452" height="92" viewBox="0 0 452 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="464" height="78" viewBox="0 0 464 78" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stop-color="#8a63f4"/><stop offset="1" stop-color="#c77dff"/>
         </linearGradient>
       </defs>
-      <path d="M40 46 C110 46 110 16 180 16" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
-      <path d="M40 46 C110 46 110 46 180 46" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
-      <path d="M40 46 C110 46 110 76 180 76" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
-      <path d="M232 16 C300 16 300 46 372 46" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
-      <path d="M232 46 C300 46 300 46 372 46" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
-      <path d="M232 76 C300 76 300 46 372 46" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
-      <circle cx="28" cy="46" r="15" fill="#1c1733" stroke="url(#g)" stroke-width="2.5"/>
-      <circle cx="28" cy="46" r="4.5" fill="#c77dff"/>
-      <circle cx="206" cy="16" r="17" fill="#6e40c9" opacity="0.92"/>
-      <circle cx="206" cy="46" r="17" fill="#6e40c9" opacity="0.92"/>
-      <circle cx="206" cy="76" r="17" fill="#6e40c9" opacity="0.92"/>
-      <circle cx="206" cy="16" r="12.5" fill="#1c1733" stroke="#a07bf0" stroke-width="2"/>
-      <circle cx="206" cy="46" r="12.5" fill="#1c1733" stroke="#a07bf0" stroke-width="2"/>
-      <circle cx="206" cy="76" r="12.5" fill="#1c1733" stroke="#a07bf0" stroke-width="2"/>
-      <circle cx="384" cy="46" r="16" fill="#1c1733" stroke="url(#g)" stroke-width="2.5"/>
-      <path d="M377 46 l5 5 l9 -10" stroke="#c77dff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M34 39 C104 39 104 14 174 14" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
+      <path d="M34 39 C104 39 104 39 174 39" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
+      <path d="M34 39 C104 39 104 64 174 64" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
+      <path d="M214 14 C284 14 284 39 354 39" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
+      <path d="M214 39 C284 39 284 39 354 39" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
+      <path d="M214 64 C284 64 284 39 354 39" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
+      <circle cx="24" cy="39" r="14" fill="#1c1733" stroke="url(#g)" stroke-width="2.5"/>
+      <circle cx="24" cy="39" r="4" fill="#c77dff"/>
+      <circle cx="194" cy="14" r="15.5" fill="#6e40c9" opacity="0.92"/>
+      <circle cx="194" cy="39" r="15.5" fill="#6e40c9" opacity="0.92"/>
+      <circle cx="194" cy="64" r="15.5" fill="#6e40c9" opacity="0.92"/>
+      <circle cx="194" cy="14" r="11.5" fill="#1c1733" stroke="#a07bf0" stroke-width="2"/>
+      <circle cx="194" cy="39" r="11.5" fill="#1c1733" stroke="#a07bf0" stroke-width="2"/>
+      <circle cx="194" cy="64" r="11.5" fill="#1c1733" stroke="#a07bf0" stroke-width="2"/>
+      <circle cx="364" cy="39" r="15" fill="#1c1733" stroke="url(#g)" stroke-width="2.5"/>
+      <path d="M357 39 l5 5 l9 -10" stroke="#c77dff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="408" y="35" fill="#8f82b3" font-family="-apple-system,sans-serif" font-size="11" font-weight="700">fan-out</text>
+      <text x="404" y="49" fill="#8f82b3" font-family="-apple-system,sans-serif" font-size="11" font-weight="700">→ merge</text>
     </svg>
   </div>
 
