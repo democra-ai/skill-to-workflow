@@ -1,0 +1,4 @@
+# Treat generated example workflows as vendored so language stats reflect the engine
+examples/output-workflow/** linguist-generated=false
+*.svg linguist-detectable=false
+docs/** linguist-documentation

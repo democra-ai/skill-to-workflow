@@ -1,0 +1,52 @@
+{
+  "name": "skill-to-workflow",
+  "version": "0.1.0",
+  "description": "Compile any Claude Agent Skill into a multi-agent Workflow — automatically. A meta-workflow that reads a Skill and emits a parallel, pipelined, adversarially-verified Workflow.",
+  "type": "module",
+  "bin": {
+    "skill-to-workflow": "bin/install.mjs"
+  },
+  "files": [
+    "workflows/",
+    "bin/",
+    "docs/",
+    "examples/",
+    "assets/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node --check workflows/skill-to-workflow.js && node --check examples/output-workflow/*.js",
+    "install-global": "node bin/install.mjs",
+    "install-project": "node bin/install.mjs --project"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "agent-skills",
+    "skills",
+    "workflow",
+    "workflows",
+    "multi-agent",
+    "orchestration",
+    "meta-skill",
+    "anthropic",
+    "ai-agents",
+    "fan-out",
+    "pipeline",
+    "codegen"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/democra-ai/skill-to-workflow.git"
+  },
+  "homepage": "https://github.com/democra-ai/skill-to-workflow#readme",
+  "bugs": {
+    "url": "https://github.com/democra-ai/skill-to-workflow/issues"
+  },
+  "author": "democra.ai",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
