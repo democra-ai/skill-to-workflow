@@ -1,196 +1,229 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" width="1280" height="420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif" role="img" aria-label="skill-to-workflow — compile a Claude Agent Skill into a multi-agent Workflow">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 440" width="1280" height="440" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="skill-to-workflow — compile a Claude Agent Skill into a multi-agent Workflow">
   <title>skill-to-workflow</title>
-  <desc>An animated diagram: a single-agent SKILL.md is compiled into a multi-agent Workflow that fans out, verifies, and reduces.</desc>
+  <desc>An animated pipeline: a SKILL.md file (one agent) is compiled into a fan-out / verify / reduce workflow DAG, then emitted as a verified audit.workflow.js file (many agents).</desc>
 
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0b0d17"/>
-      <stop offset="0.55" stop-color="#15102b"/>
-      <stop offset="1" stop-color="#1a0f2e"/>
+      <stop offset="0" stop-color="#0a0c15"/>
+      <stop offset="0.55" stop-color="#130f26"/>
+      <stop offset="1" stop-color="#190d2b"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#8a63f4"/>
       <stop offset="1" stop-color="#c77dff"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#6e40c9" stop-opacity="0.55"/>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#5eead4"/>
+    </linearGradient>
+    <radialGradient id="glowV" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#6e40c9" stop-opacity="0.5"/>
       <stop offset="1" stop-color="#6e40c9" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="dotglow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="1"/>
+    <radialGradient id="glowT" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#0f766e" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#0f766e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pulseV" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.4" stop-color="#c77dff"/>
       <stop offset="1" stop-color="#c77dff" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="scanline" x1="0" y1="0" x2="1" y2="0">
+    <radialGradient id="pulseT" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.4" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#5eead4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="scan" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#c77dff" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#c77dff" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#c77dff" stop-opacity="0.85"/>
       <stop offset="1" stop-color="#c77dff" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="shimmer" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="uline" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#8a63f4" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#c77dff" stop-opacity="1"/>
-      <stop offset="1" stop-color="#8a63f4" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#c77dff"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
     </linearGradient>
-    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
-      <feGaussianBlur stdDeviation="6"/>
-    </filter>
-    <filter id="softdot" x="-150%" y="-150%" width="400%" height="400%">
-      <feGaussianBlur stdDeviation="2.2"/>
-    </filter>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#8a63f4"/>
-    </marker>
+    <filter id="soft" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="softer" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="2.4"/></filter>
+    <marker id="arrV" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a07bf0"/></marker>
+    <marker id="arrT" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2dd4bf"/></marker>
 
     <style>
-      /* background glow breathing */
-      .glowbg { animation: glowbg 7s ease-in-out infinite; }
-      @keyframes glowbg { 0%,100% { opacity:.42 } 50% { opacity:.8 } }
+      .brand { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .mono  { font-family: 'SF Mono', 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace; }
 
-      /* flowing data along DAG edges */
-      .flow { stroke-dasharray: 9 15; stroke-dashoffset: 0; animation: flow 1.05s linear infinite; }
-      .flow.s2 { animation-delay: .5s; }
-      @keyframes flow { to { stroke-dashoffset: -24; } }
+      .glowV { animation: glowV 7s ease-in-out infinite; }
+      @keyframes glowV { 0%,100%{opacity:.5} 50%{opacity:.85} }
+      .glowT { animation: glowT 7s ease-in-out infinite 1s; }
+      @keyframes glowT { 0%,100%{opacity:.35} 50%{opacity:.7} }
 
-      /* parallel-node breathing glow (activate after the source) */
-      .nodeglow { transform-box: fill-box; transform-origin: center; animation: breathe 2.2s ease-in-out infinite; }
-      .nodeglow.n1 { animation-delay: .50s; }
-      .nodeglow.n2 { animation-delay: .75s; }
-      .nodeglow.n3 { animation-delay: 1.0s; }
-      @keyframes breathe { 0%,100% { opacity:.30; transform:scale(.85) } 50% { opacity:.92; transform:scale(1.12) } }
+      /* DAG edge data-flow */
+      .flow { stroke-dasharray: 8 14; animation: flow 1s linear infinite; }
+      .flow.b { animation-delay: .5s; }
+      @keyframes flow { to { stroke-dashoffset: -22; } }
 
-      /* merge checkmark draws itself each cycle */
-      .check { stroke-dasharray: 24; stroke-dashoffset: 24; animation: draw 3.2s ease-in-out infinite; }
-      @keyframes draw { 0% { stroke-dashoffset:24 } 28% { stroke-dashoffset:0 } 86% { stroke-dashoffset:0 } 100% { stroke-dashoffset:24 } }
+      /* parallel node breathing */
+      .breath { transform-box: fill-box; transform-origin: center; animation: breath 2.2s ease-in-out infinite; }
+      .breath.n1 { animation-delay:.45s } .breath.n2 { animation-delay:.7s } .breath.n3 { animation-delay:.95s }
+      @keyframes breath { 0%,100%{opacity:.28; transform:scale(.82)} 50%{opacity:.9; transform:scale(1.12)} }
 
-      /* SKILL.md parse scan-line */
-      .scan { animation: scan 2.8s ease-in-out infinite; }
-      @keyframes scan {
-        0% { transform: translateY(0); opacity:0 }
-        12% { opacity:1 }
-        50% { transform: translateY(98px); opacity:1 }
-        62% { opacity:0 }
-        100% { transform: translateY(0); opacity:0 }
-      }
+      /* self-drawing checks */
+      .draw { stroke-dasharray: 26; stroke-dashoffset: 26; animation: draw 3.4s ease-in-out infinite; }
+      @keyframes draw { 0%{stroke-dashoffset:26} 30%{stroke-dashoffset:0} 88%{stroke-dashoffset:0} 100%{stroke-dashoffset:26} }
 
-      /* drifting particles (translate on the group, twinkle on the dot) */
-      .drift { animation: drift 9s ease-in-out infinite; }
-      .drift.b { animation-delay: -3s; }
-      .drift.c { animation-delay: -6s; }
-      .drift.d { animation-delay: -1.5s; }
-      @keyframes drift { 0%,100% { transform: translate(0,0) } 50% { transform: translate(0,-16px) } }
-      .twinkle { animation: tw 3s ease-in-out infinite; }
-      .twinkle.b { animation-delay: 1.2s; }
-      .twinkle.c { animation-delay: 2.1s; }
-      .twinkle.d { animation-delay: .6s; }
-      @keyframes tw { 0%,100% { opacity:.15 } 50% { opacity:.7 } }
+      /* SKILL.md parse scan */
+      .scanline { animation: scanmove 2.8s ease-in-out infinite; }
+      @keyframes scanmove { 0%{transform:translateY(0);opacity:0} 12%{opacity:1} 50%{transform:translateY(104px);opacity:1} 64%{opacity:0} 100%{transform:translateY(0);opacity:0} }
 
-      /* card hover-float + wordmark underline shimmer */
+      /* gentle float on the two file cards */
       .float { transform-box: fill-box; transform-origin: center; animation: float 6s ease-in-out infinite; }
-      @keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-5px) } }
-      .uline { animation: uline 3s ease-in-out infinite; }
-      @keyframes uline { 0%,100% { opacity:.45 } 50% { opacity:1 } }
+      .float.r { animation-delay: 3s; }
+      @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+
+      /* drifting particles */
+      .drift { animation: drift 9s ease-in-out infinite; }
+      .drift.b{animation-delay:-3s} .drift.c{animation-delay:-6s} .drift.d{animation-delay:-1.5s}
+      @keyframes drift { 0%,100%{transform:translate(0,0)} 50%{transform:translate(0,-14px)} }
+      .tw { animation: tw 3s ease-in-out infinite; }
+      .tw.b{animation-delay:1.2s} .tw.c{animation-delay:2.1s} .tw.d{animation-delay:.6s}
+      @keyframes tw { 0%,100%{opacity:.12} 50%{opacity:.65} }
+
+      .shimmer { animation: shimmer 3.2s ease-in-out infinite; }
+      @keyframes shimmer { 0%,100%{opacity:.4} 50%{opacity:1} }
 
       @media (prefers-reduced-motion: reduce) {
-        .glowbg,.flow,.nodeglow,.check,.scan,.drift,.twinkle,.float,.uline { animation: none; }
-        .check { stroke-dashoffset: 0; }
+        .glowV,.glowT,.flow,.breath,.draw,.scanline,.float,.drift,.tw,.shimmer { animation: none; }
+        .draw { stroke-dashoffset: 0; } .breath { opacity:.7; }
       }
     </style>
   </defs>
 
-  <rect width="1280" height="420" fill="url(#bg)"/>
-  <ellipse class="glowbg" cx="900" cy="215" rx="440" ry="270" fill="url(#glow)"/>
+  <!-- backdrop -->
+  <rect width="1280" height="440" fill="url(#bg)"/>
+  <ellipse class="glowV" cx="470" cy="210" rx="430" ry="250" fill="url(#glowV)"/>
+  <ellipse class="glowT" cx="1010" cy="210" rx="360" ry="220" fill="url(#glowT)"/>
 
-  <!-- drifting particles -->
-  <g class="drift a"><circle class="twinkle a" cx="180" cy="70" r="2" fill="#8a63f4"/></g>
-  <g class="drift b"><circle class="twinkle b" cx="1120" cy="350" r="2" fill="#c77dff"/></g>
-  <g class="drift c"><circle class="twinkle c" cx="1180" cy="90" r="1.6" fill="#8a63f4"/></g>
-  <g class="drift d"><circle class="twinkle d" cx="430" cy="60" r="1.6" fill="#c77dff"/></g>
-  <g class="drift b"><circle class="twinkle a" cx="980" cy="380" r="1.4" fill="#8a63f4"/></g>
+  <!-- particles -->
+  <g class="drift a"><circle class="tw a" cx="210" cy="86" r="2" fill="#8a63f4"/></g>
+  <g class="drift c"><circle class="tw c" cx="1150" cy="92" r="1.7" fill="#2dd4bf"/></g>
+  <g class="drift b"><circle class="tw b" cx="1090" cy="360" r="2" fill="#5eead4"/></g>
+  <g class="drift d"><circle class="tw d" cx="360" cy="62" r="1.6" fill="#c77dff"/></g>
+  <g class="drift b"><circle class="tw a" cx="690" cy="50" r="1.5" fill="#8a63f4"/></g>
 
-  <!-- ===================== left: the SKILL ===================== -->
-  <g class="float" transform="translate(120,150)">
-    <rect x="0" y="0" width="150" height="170" rx="14" fill="#1c1733" stroke="#3a2f5c" stroke-width="1.5"/>
-    <rect x="0" y="0" width="150" height="34" rx="14" fill="#241b40"/>
-    <rect x="0" y="20" width="150" height="14" fill="#241b40"/>
-    <circle cx="20" cy="17" r="4" fill="#c77dff"/>
-    <text x="36" y="22" fill="#b9a6e8" font-size="13" font-weight="600">SKILL.md</text>
-
-    <rect x="20" y="54" width="110" height="7" rx="3.5" fill="#4b3d77"/>
-    <rect x="20" y="72" width="90" height="7" rx="3.5" fill="#3a2f5c"/>
-    <rect x="20" y="90" width="100" height="7" rx="3.5" fill="#3a2f5c"/>
-    <rect x="20" y="108" width="72" height="7" rx="3.5" fill="#3a2f5c"/>
-    <rect x="20" y="132" width="110" height="7" rx="3.5" fill="#4b3d77"/>
-    <rect x="20" y="150" width="84" height="7" rx="3.5" fill="#3a2f5c"/>
-
-    <!-- parsing scan line -->
-    <rect class="scan" x="12" y="50" width="126" height="3" rx="1.5" fill="url(#scanline)" filter="url(#softdot)"/>
-
-    <text x="75" y="200" fill="#6f6291" font-size="12" text-anchor="middle" letter-spacing="2">ONE AGENT</text>
+  <!-- category chip -->
+  <g transform="translate(80,40)">
+    <rect x="0" y="0" width="166" height="28" rx="14" fill="#1a1533" stroke="#352a57" stroke-width="1"/>
+    <circle cx="16" cy="14" r="3.5" fill="#c77dff"><animate attributeName="opacity" values="1;.35;1" dur="2.2s" repeatCount="indefinite"/></circle>
+    <text class="mono" x="30" y="18.5" fill="#b9a6e8" font-size="11" letter-spacing="2.5">META-WORKFLOW</text>
   </g>
 
-  <!-- ===================== middle: compile arrow ===================== -->
+  <!-- ============================ THE PIPELINE (centerline y=206) ============================ -->
+
+  <!-- (1) SKILL.md input card -->
+  <g class="float" transform="translate(80,118)">
+    <rect x="0" y="0" width="150" height="176" rx="15" fill="#16122b" stroke="#34284f" stroke-width="1.5"/>
+    <rect x="0" y="0" width="150" height="34" rx="15" fill="#221a3d"/><rect x="0" y="20" width="150" height="14" fill="#221a3d"/>
+    <circle cx="18" cy="17" r="4" fill="#c77dff"/>
+    <text class="mono" x="32" y="21.5" fill="#c3b3ee" font-size="11.5">SKILL.md</text>
+    <rect x="18" y="56"  width="106" height="7" rx="3.5" fill="#4b3d77"/>
+    <rect x="18" y="74"  width="84"  height="7" rx="3.5" fill="#322a4d"/>
+    <rect x="18" y="92"  width="98"  height="7" rx="3.5" fill="#322a4d"/>
+    <rect x="18" y="110" width="70"  height="7" rx="3.5" fill="#322a4d"/>
+    <rect x="18" y="132" width="106" height="7" rx="3.5" fill="#4b3d77"/>
+    <rect x="18" y="150" width="78"  height="7" rx="3.5" fill="#322a4d"/>
+    <rect class="scanline" x="10" y="52" width="130" height="3" rx="1.5" fill="url(#scan)" filter="url(#softer)"/>
+  </g>
+  <text class="mono" x="155" y="314" fill="#6f6291" font-size="10.5" text-anchor="middle" letter-spacing="2">INPUT · ONE AGENT</text>
+
+  <!-- (2) compile arrow -->
   <g>
-    <line x1="300" y1="235" x2="448" y2="235" stroke="url(#accent)" stroke-width="2.5" marker-end="url(#arrow)" stroke-linecap="round"/>
-    <text x="372" y="219" fill="#c77dff" font-size="13" text-anchor="middle" font-weight="600" letter-spacing="1">compile</text>
-    <text x="372" y="261" fill="#6f6291" font-size="11" text-anchor="middle">decompose · verify</text>
-
-    <!-- data pulse traveling along the arrow -->
-    <circle r="6" fill="url(#dotglow)">
-      <animateMotion dur="1.8s" repeatCount="indefinite" calcMode="linear" path="M300,235 L446,235"/>
-      <animate attributeName="opacity" dur="1.8s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.05;0.18;0.82;1"/>
+    <line x1="246" y1="206" x2="430" y2="206" stroke="#5a4a8f" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrV)"/>
+    <text x="338" y="190" fill="#c77dff" font-size="12.5" text-anchor="middle" font-weight="600" letter-spacing="1">compile</text>
+    <text class="mono" x="338" y="226" fill="#6f6291" font-size="10.5" text-anchor="middle">decompose</text>
+    <circle r="5.5" fill="url(#pulseV)">
+      <animateMotion dur="2s" repeatCount="indefinite" calcMode="linear" path="M246,206 L428,206"/>
+      <animate attributeName="opacity" dur="2s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.06;0.2;0.8;1"/>
     </circle>
   </g>
 
-  <!-- ===================== right: the WORKFLOW DAG ===================== -->
-  <g transform="translate(500,150)" stroke-linecap="round">
-    <!-- edges (faint base) -->
-    <path d="M52,85 C110,85 110,30 168,30"   fill="none" stroke="#3a2f5c" stroke-width="2.5"/>
-    <path d="M52,85 C110,85 110,85 168,85"   fill="none" stroke="#3a2f5c" stroke-width="2.5"/>
-    <path d="M52,85 C110,85 110,140 168,140" fill="none" stroke="#3a2f5c" stroke-width="2.5"/>
-    <path d="M220,30  C280,30 280,85 338,85"  fill="none" stroke="#3a2f5c" stroke-width="2.5"/>
-    <path d="M220,85  C280,85 280,85 338,85"  fill="none" stroke="#3a2f5c" stroke-width="2.5"/>
-    <path d="M220,140 C280,140 280,85 338,85" fill="none" stroke="#3a2f5c" stroke-width="2.5"/>
+  <!-- (3) the workflow DAG -->
+  <g stroke-linecap="round">
+    <!-- base edges -->
+    <path d="M464,206 C536,206 536,156 606,156" fill="none" stroke="#2f2748" stroke-width="2.5"/>
+    <path d="M464,206 C536,206 536,206 606,206" fill="none" stroke="#2f2748" stroke-width="2.5"/>
+    <path d="M464,206 C536,206 536,256 606,256" fill="none" stroke="#2f2748" stroke-width="2.5"/>
+    <path d="M634,156 C706,156 706,206 776,206" fill="none" stroke="#2f2748" stroke-width="2.5"/>
+    <path d="M634,206 C706,206 706,206 776,206" fill="none" stroke="#2f2748" stroke-width="2.5"/>
+    <path d="M634,256 C706,256 706,206 776,206" fill="none" stroke="#2f2748" stroke-width="2.5"/>
+    <!-- flowing overlay -->
+    <path class="flow"   d="M464,206 C536,206 536,156 606,156" fill="none" stroke="#8a63f4" stroke-width="2.5"/>
+    <path class="flow"   d="M464,206 C536,206 536,206 606,206" fill="none" stroke="#8a63f4" stroke-width="2.5"/>
+    <path class="flow"   d="M464,206 C536,206 536,256 606,256" fill="none" stroke="#8a63f4" stroke-width="2.5"/>
+    <path class="flow b" d="M634,156 C706,156 706,206 776,206" fill="none" stroke="#c77dff" stroke-width="2.5"/>
+    <path class="flow b" d="M634,206 C706,206 706,206 776,206" fill="none" stroke="#c77dff" stroke-width="2.5"/>
+    <path class="flow b" d="M634,256 C706,256 706,206 776,206" fill="none" stroke="#c77dff" stroke-width="2.5"/>
 
-    <!-- edges (animated flow overlay) -->
-    <path class="flow"    d="M52,85 C110,85 110,30 168,30"   fill="none" stroke="#8a63f4" stroke-width="2.5"/>
-    <path class="flow"    d="M52,85 C110,85 110,85 168,85"   fill="none" stroke="#8a63f4" stroke-width="2.5"/>
-    <path class="flow"    d="M52,85 C110,85 110,140 168,140" fill="none" stroke="#8a63f4" stroke-width="2.5"/>
-    <path class="flow s2" d="M220,30  C280,30 280,85 338,85"  fill="none" stroke="#c77dff" stroke-width="2.5"/>
-    <path class="flow s2" d="M220,85  C280,85 280,85 338,85"  fill="none" stroke="#c77dff" stroke-width="2.5"/>
-    <path class="flow s2" d="M220,140 C280,140 280,85 338,85" fill="none" stroke="#c77dff" stroke-width="2.5"/>
-
-    <!-- source node -->
-    <circle cx="36" cy="85" r="17" fill="none" stroke="#c77dff" stroke-width="2">
-      <animate attributeName="r" values="17;40" dur="2.4s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.7;0" dur="2.4s" repeatCount="indefinite"/>
+    <!-- source -->
+    <circle cx="448" cy="206" r="16" fill="none" stroke="#c77dff" stroke-width="2">
+      <animate attributeName="r" values="16;40" dur="2.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.65;0" dur="2.4s" repeatCount="indefinite"/>
     </circle>
-    <circle cx="36" cy="85" r="17" fill="#1c1733" stroke="url(#accent)" stroke-width="2.5"/>
-    <circle cx="36" cy="85" r="5" fill="#c77dff">
-      <animate attributeName="r" values="4.5;6.5;4.5" dur="1.6s" repeatCount="indefinite"/>
+    <circle cx="448" cy="206" r="16" fill="#16122b" stroke="url(#violet)" stroke-width="2.5"/>
+    <circle cx="448" cy="206" r="5" fill="#c77dff"><animate attributeName="r" values="4.5;6.5;4.5" dur="1.6s" repeatCount="indefinite"/></circle>
+
+    <!-- 3 parallel agents -->
+    <circle class="breath n1" cx="620" cy="156" r="20" fill="#6e40c9" filter="url(#soft)"/>
+    <circle class="breath n2" cx="620" cy="206" r="20" fill="#6e40c9" filter="url(#soft)"/>
+    <circle class="breath n3" cx="620" cy="256" r="20" fill="#6e40c9" filter="url(#soft)"/>
+    <circle cx="620" cy="156" r="15" fill="#16122b" stroke="#a07bf0" stroke-width="2"/>
+    <circle cx="620" cy="206" r="15" fill="#16122b" stroke="#a07bf0" stroke-width="2"/>
+    <circle cx="620" cy="256" r="15" fill="#16122b" stroke="#a07bf0" stroke-width="2"/>
+    <!-- tiny verify checks inside parallel nodes -->
+    <path class="draw" d="M614,206 l4,4 l8,-9" fill="none" stroke="#c9b6f6" stroke-width="2" stroke-linejoin="round" style="animation-delay:.2s"/>
+
+    <!-- merge / reduce -->
+    <circle cx="792" cy="206" r="17" fill="none" stroke="#2dd4bf" stroke-width="2">
+      <animate attributeName="r" values="17;38" dur="3.4s" begin="1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.65;0" dur="3.4s" begin="1s" repeatCount="indefinite"/>
     </circle>
+    <circle cx="792" cy="206" r="17" fill="#16122b" stroke="url(#violet)" stroke-width="2.5"/>
+    <path class="draw" d="M785,206 l5,5 l9,-11" fill="none" stroke="#c77dff" stroke-width="2.5" stroke-linejoin="round"/>
+  </g>
+  <text class="mono" x="620" y="314" fill="#6f6291" font-size="10.5" text-anchor="middle" letter-spacing="2">FAN-OUT · VERIFY · REDUCE</text>
 
-    <!-- three parallel nodes (breathing glow + crisp ring) -->
-    <circle class="nodeglow n1" cx="194" cy="30"  r="20" fill="#6e40c9" filter="url(#soft)"/>
-    <circle class="nodeglow n2" cx="194" cy="85"  r="20" fill="#6e40c9" filter="url(#soft)"/>
-    <circle class="nodeglow n3" cx="194" cy="140" r="20" fill="#6e40c9" filter="url(#soft)"/>
-    <circle cx="194" cy="30"  r="15" fill="#1c1733" stroke="#a07bf0" stroke-width="2"/>
-    <circle cx="194" cy="85"  r="15" fill="#1c1733" stroke="#a07bf0" stroke-width="2"/>
-    <circle cx="194" cy="140" r="15" fill="#1c1733" stroke="#a07bf0" stroke-width="2"/>
-
-    <!-- merge node + self-drawing check -->
-    <circle cx="356" cy="85" r="18" fill="none" stroke="#c77dff" stroke-width="2">
-      <animate attributeName="r" values="18;36" dur="3.2s" begin="0.9s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.7;0" dur="3.2s" begin="0.9s" repeatCount="indefinite"/>
+  <!-- (4) verified arrow -->
+  <g>
+    <line x1="812" y1="206" x2="1004" y2="206" stroke="#1f6b62" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrT)"/>
+    <text x="908" y="190" fill="#2dd4bf" font-size="12.5" text-anchor="middle" font-weight="600" letter-spacing="0.5">verified ✓</text>
+    <text class="mono" x="908" y="226" fill="#5b8079" font-size="10.5" text-anchor="middle">parse · 3 lenses</text>
+    <circle r="5.5" fill="url(#pulseT)">
+      <animateMotion dur="2s" begin="0.5s" repeatCount="indefinite" calcMode="linear" path="M812,206 L1002,206"/>
+      <animate attributeName="opacity" dur="2s" begin="0.5s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;0.06;0.2;0.8;1"/>
     </circle>
-    <circle cx="356" cy="85" r="18" fill="#1c1733" stroke="url(#accent)" stroke-width="2.5"/>
-    <path class="check" d="M349,85 l5,5 l9,-11" fill="none" stroke="#c77dff" stroke-width="2.5" stroke-linejoin="round"/>
-
-    <text x="194" y="195" fill="#6f6291" font-size="12" text-anchor="middle" letter-spacing="2">FAN-OUT · VERIFY · REDUCE</text>
   </g>
 
-  <!-- ===================== wordmark ===================== -->
-  <g transform="translate(120,360)">
-    <text x="0" y="0" fill="#ffffff" font-size="34" font-weight="800" letter-spacing="-0.5">skill<tspan fill="#8a63f4">-to-</tspan>workflow</text>
-    <rect class="uline" x="2" y="12" width="318" height="3" rx="1.5" fill="url(#shimmer)"/>
+  <!-- (5) generated workflow output card -->
+  <g class="float r" transform="translate(1016,118)">
+    <rect x="0" y="0" width="166" height="176" rx="15" fill="#15131f" stroke="#2a3f3a" stroke-width="1.5"/>
+    <rect x="0" y="0" width="166" height="34" rx="15" fill="#192521"/><rect x="0" y="20" width="166" height="14" fill="#192521"/>
+    <circle cx="18" cy="17" r="4" fill="#2dd4bf"/>
+    <text class="mono" x="32" y="21.5" fill="#9fd9cf" font-size="10.5">audit.workflow.js</text>
+    <path d="M150,13 l3.5,3.5 l6.5,-8" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    <rect x="18" y="56"  width="118" height="7" rx="3.5" fill="#2f6f5f"/>
+    <rect x="18" y="74"  width="88"  height="7" rx="3.5" fill="#2c3340"/>
+    <rect x="18" y="92"  width="104" height="7" rx="3.5" fill="#2c3340"/>
+    <rect x="18" y="110" width="74"  height="7" rx="3.5" fill="#3a4f49"/>
+    <rect x="18" y="132" width="112" height="7" rx="3.5" fill="#2c3340"/>
+    <rect x="18" y="150" width="64"  height="7" rx="3.5" fill="#2c3340"/>
   </g>
-  <text x="1160" y="362" text-anchor="end" fill="#8f82b3" font-size="16" font-weight="500">Compile a Claude Agent Skill into a multi-agent Workflow</text>
+  <text class="mono" x="1099" y="314" fill="#5b8079" font-size="10.5" text-anchor="middle" letter-spacing="2">OUTPUT · MANY AGENTS</text>
+
+  <!-- ============================ brand bar ============================ -->
+  <line x1="80" y1="366" x2="1200" y2="366" stroke="#2a2347" stroke-width="1"/>
+  <g transform="translate(80,402)">
+    <text class="brand" x="0" y="0" fill="#ffffff" font-size="30" font-weight="800" letter-spacing="-0.5">skill<tspan fill="#8a63f4">-to-</tspan>workflow</text>
+    <rect class="shimmer" x="2" y="11" width="286" height="3" rx="1.5" fill="url(#uline)"/>
+  </g>
+  <text class="brand" x="1200" y="399" text-anchor="end" fill="#8f82b3" font-size="14.5" font-weight="500">Compile a Claude Agent Skill into a multi-agent Workflow</text>
 </svg>
