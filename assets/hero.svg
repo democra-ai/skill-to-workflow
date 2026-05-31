@@ -76,8 +76,13 @@
       .scanline { animation: scanmove 2.8s ease-in-out infinite; }
       @keyframes scanmove { 0%{transform:translateY(0);opacity:0} 12%{opacity:1} 50%{transform:translateY(104px);opacity:1} 64%{opacity:0} 100%{transform:translateY(0);opacity:0} }
 
-      /* gentle float on the two file cards */
-      .float { transform-box: fill-box; transform-origin: center; animation: float 6s ease-in-out infinite; }
+      /* gentle float on the two file cards.
+         NOTE: positioning lives on a WRAPPER <g transform="translate(...)"> and the
+         animation lives on this inner <g>, which carries ONLY the CSS transform.
+         Never put a transform="" attribute AND a CSS transform animation on the same
+         element — the CSS property overrides the attribute, so the element would snap
+         to x=0 the moment the animation starts (worse with a delay). Two layers compose. */
+      .float { animation: float 6s ease-in-out infinite; }
       .float.r { animation-delay: 3s; }
       @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
 
@@ -120,8 +125,8 @@
 
   <!-- ============================ THE PIPELINE (centerline y=206) ============================ -->
 
-  <!-- (1) SKILL.md input card -->
-  <g class="float" transform="translate(80,118)">
+  <!-- (1) SKILL.md input card  (outer g positions, inner g animates) -->
+  <g transform="translate(80,118)"><g class="float">
     <rect x="0" y="0" width="150" height="176" rx="15" fill="#16122b" stroke="#34284f" stroke-width="1.5"/>
     <rect x="0" y="0" width="150" height="34" rx="15" fill="#221a3d"/><rect x="0" y="20" width="150" height="14" fill="#221a3d"/>
     <circle cx="18" cy="17" r="4" fill="#c77dff"/>
@@ -133,7 +138,7 @@
     <rect x="18" y="132" width="106" height="7" rx="3.5" fill="#4b3d77"/>
     <rect x="18" y="150" width="78"  height="7" rx="3.5" fill="#322a4d"/>
     <rect class="scanline" x="10" y="52" width="130" height="3" rx="1.5" fill="url(#scan)" filter="url(#softer)"/>
-  </g>
+  </g></g>
   <text class="mono" x="155" y="314" fill="#6f6291" font-size="10.5" text-anchor="middle" letter-spacing="2">INPUT · ONE AGENT</text>
 
   <!-- (2) compile arrow -->
@@ -203,8 +208,8 @@
     </circle>
   </g>
 
-  <!-- (5) generated workflow output card -->
-  <g class="float r" transform="translate(1016,118)">
+  <!-- (5) generated workflow output card  (outer g positions, inner g animates) -->
+  <g transform="translate(1016,118)"><g class="float r">
     <rect x="0" y="0" width="166" height="176" rx="15" fill="#15131f" stroke="#2a3f3a" stroke-width="1.5"/>
     <rect x="0" y="0" width="166" height="34" rx="15" fill="#192521"/><rect x="0" y="20" width="166" height="14" fill="#192521"/>
     <circle cx="18" cy="17" r="4" fill="#2dd4bf"/>
@@ -216,7 +221,7 @@
     <rect x="18" y="110" width="74"  height="7" rx="3.5" fill="#3a4f49"/>
     <rect x="18" y="132" width="112" height="7" rx="3.5" fill="#2c3340"/>
     <rect x="18" y="150" width="64"  height="7" rx="3.5" fill="#2c3340"/>
-  </g>
+  </g></g>
   <text class="mono" x="1099" y="314" fill="#5b8079" font-size="10.5" text-anchor="middle" letter-spacing="2">OUTPUT · MANY AGENTS</text>
 
   <!-- ============================ brand bar ============================ -->
