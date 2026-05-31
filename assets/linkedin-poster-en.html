@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 540px; height: 720px; }
+  body {
+    font-family: "Avenir Next", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background:
+      radial-gradient(120% 80% at 82% 6%, rgba(110,64,201,0.42) 0%, rgba(110,64,201,0) 55%),
+      radial-gradient(95% 70% at 10% 95%, rgba(15,118,110,0.30) 0%, rgba(15,118,110,0) 52%),
+      linear-gradient(157deg, #0a0c15 0%, #130f26 55%, #190d2b 100%);
+    color: #fff; width: 540px; height: 720px; padding: 38px 38px 26px;
+    display: flex; flex-direction: column; position: relative; overflow: hidden;
+  }
+  body::before { content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 26px 26px; opacity: 0.6; }
+  .mono { font-family: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace; }
+
+  .kicker { font-size: 12.5px; letter-spacing: 3px; text-transform: uppercase; color: #b9a6e8;
+    font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .kicker .dot { width: 6px; height: 6px; border-radius: 50%; background: #c77dff; box-shadow: 0 0 12px #c77dff; }
+
+  .title { margin-top: 15px; }
+  .title .a { font-size: 54px; font-weight: 800; letter-spacing: -1px; line-height: 1.0; }
+  .title .arrow { font-size: 30px; font-weight: 800; line-height: 1.2;
+    background: linear-gradient(90deg, #8a63f4, #2dd4bf); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { margin-top: 13px; font-size: 17px; font-weight: 600; color: #e7defb; line-height: 1.5; }
+  .subtitle b { color: #fff; }
+
+  .dag { margin: 14px 0 12px; }
+
+  .cards { display: flex; flex-direction: column; gap: 10px; }
+  .card { background: linear-gradient(180deg, rgba(36,27,64,0.85), rgba(24,22,40,0.85));
+    border: 1px solid #3a2f5c; border-radius: 14px; padding: 12px 15px; display: flex; align-items: center; gap: 13px; }
+  .card.teal { border-color: #234b45; background: linear-gradient(180deg, rgba(20,38,35,0.8), rgba(18,24,30,0.85)); }
+  .card .emoji { width: 40px; height: 40px; flex: 0 0 40px; border-radius: 11px;
+    background: radial-gradient(circle at 35% 30%, #6e40c9, #3a2f5c);
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+    box-shadow: inset 0 0 0 1px rgba(160,123,240,0.5); }
+  .card.teal .emoji { background: radial-gradient(circle at 35% 30%, #0f766e, #1c2b28); box-shadow: inset 0 0 0 1px rgba(45,212,191,0.4); }
+  .card .txt b { font-size: 17px; font-weight: 700; color: #fff; }
+  .card .txt p { font-size: 12.5px; color: #a99cce; margin-top: 2px; line-height: 1.3; }
+  .card.teal .txt p { color: #8aa6a0; }
+
+  .npx { margin-top: 13px; font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 12.5px;
+    color: #c8bbf0; background: rgba(8,7,16,0.6); border: 1px solid #34284f; border-radius: 9px; padding: 10px 13px; }
+  .npx .p { color: #6f6291; }
+
+  .footer { margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(110,64,201,0.35);
+    display: flex; align-items: center; justify-content: space-between; }
+  .footer .repo { font-size: 14px; font-weight: 700; color: #fff; }
+  .footer .repo span { color: #8a63f4; }
+  .footer .by { font-size: 12px; color: #7e72a6; letter-spacing: .3px; }
+</style>
+</head>
+<body>
+  <div class="kicker"><span class="dot"></span>AI NATIVE · META-WORKFLOW</div>
+
+  <div class="title">
+    <div class="a">Skill</div>
+    <div class="arrow">↓ compiles to</div>
+    <div class="a">Workflow</div>
+  </div>
+
+  <div class="subtitle">Turn your AI skills into <b>multi-agent workflows</b><br/>parallel · self-verifying · production-grade</div>
+
+  <div class="dag">
+    <svg width="464" height="78" viewBox="0 0 464 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a63f4"/><stop offset="1" stop-color="#2dd4bf"/></linearGradient></defs>
+      <path d="M34 39 C104 39 104 14 174 14" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
+      <path d="M34 39 C104 39 104 39 174 39" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
+      <path d="M34 39 C104 39 104 64 174 64" stroke="#5a4a8f" stroke-width="2.5" fill="none"/>
+      <path d="M214 14 C284 14 284 39 354 39" stroke="#6a6ab0" stroke-width="2.5" fill="none"/>
+      <path d="M214 39 C284 39 284 39 354 39" stroke="#6a6ab0" stroke-width="2.5" fill="none"/>
+      <path d="M214 64 C284 64 284 39 354 39" stroke="#6a6ab0" stroke-width="2.5" fill="none"/>
+      <circle cx="24" cy="39" r="14" fill="#16122b" stroke="url(#g)" stroke-width="2.5"/><circle cx="24" cy="39" r="4" fill="#c77dff"/>
+      <circle cx="194" cy="14" r="15.5" fill="#6e40c9" opacity="0.9"/><circle cx="194" cy="39" r="15.5" fill="#6e40c9" opacity="0.9"/><circle cx="194" cy="64" r="15.5" fill="#6e40c9" opacity="0.9"/>
+      <circle cx="194" cy="14" r="11.5" fill="#16122b" stroke="#a07bf0" stroke-width="2"/><circle cx="194" cy="39" r="11.5" fill="#16122b" stroke="#a07bf0" stroke-width="2"/><circle cx="194" cy="64" r="11.5" fill="#16122b" stroke="#a07bf0" stroke-width="2"/>
+      <circle cx="364" cy="39" r="15" fill="#16122b" stroke="#2dd4bf" stroke-width="2.5"/>
+      <path d="M357 39 l5 5 l9 -10" stroke="#2dd4bf" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="408" y="35" fill="#8f82b3" font-size="11" font-weight="700" font-family="monospace">fan-out</text>
+      <text x="404" y="49" fill="#7fbfb5" font-size="11" font-weight="700" font-family="monospace">→ merge</text>
+    </svg>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="emoji">⚡</div><div class="txt"><b>Parallel fan-out</b><p>Independent steps run at once, not one-by-one — wall-clock collapses</p></div></div>
+    <div class="card"><div class="emoji">🧪</div><div class="txt"><b>Adversarial self-check</b><p>N agents try to refute each finding; only survivors are kept</p></div></div>
+    <div class="card teal"><div class="emoji">🔗</div><div class="txt"><b>Typed hand-offs</b><p>JSON Schema between stages — branch, dedupe, loop on real data</p></div></div>
+  </div>
+
+  <div class="npx"><span class="p">$</span> npx github:democra-ai/skill-to-workflow</div>
+
+  <div class="footer">
+    <div class="repo">github.com/democra-ai/<span>skill-to-workflow</span></div>
+    <div class="by">made by democra.ai</div>
+  </div>
+</body>
+</html>

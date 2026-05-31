@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1280px; height: 640px; }
+  body {
+    font-family: "Avenir Next", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background:
+      radial-gradient(80% 90% at 16% 30%, rgba(110,64,201,0.40) 0%, rgba(110,64,201,0) 55%),
+      radial-gradient(70% 80% at 88% 72%, rgba(15,118,110,0.32) 0%, rgba(15,118,110,0) 55%),
+      linear-gradient(157deg, #0a0c15 0%, #130f26 55%, #190d2b 100%);
+    color: #fff; width: 1280px; height: 640px; padding: 66px 72px;
+    display: flex; flex-direction: column; position: relative; overflow: hidden;
+  }
+  body::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.045) 1px, transparent 1px);
+    background-size: 30px 30px; opacity: 0.6;
+  }
+  .mono { font-family: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace; }
+
+  .kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; letter-spacing: 4px;
+    color: #b9a6e8; font-weight: 700; }
+  .kicker .dot { width: 8px; height: 8px; border-radius: 50%; background: #c77dff; box-shadow: 0 0 14px #c77dff; }
+
+  h1 { margin-top: 26px; font-size: 92px; font-weight: 800; letter-spacing: -2px; line-height: 1; }
+  h1 .d { color: #8a63f4; }
+  .tag { margin-top: 22px; font-size: 30px; font-weight: 500; color: #e7defb; line-height: 1.32; max-width: 1000px; }
+  .tag b { color: #fff; font-weight: 700; }
+
+  .pipe { margin-top: auto; margin-bottom: 8px; }
+
+  .footer { display: flex; align-items: center; justify-content: space-between; }
+  .footer .repo { font-size: 22px; font-weight: 700; }
+  .footer .repo .s { color: #8a63f4; }
+  .chips { display: flex; gap: 10px; }
+  .chip { font-size: 15px; font-weight: 600; color: #c8bbf0; background: rgba(20,16,38,0.7);
+    border: 1px solid #352a57; border-radius: 999px; padding: 8px 15px; letter-spacing: .3px; }
+  .chip.t { color: #8fe7da; border-color: #234b45; }
+</style>
+</head>
+<body>
+  <div class="kicker"><span class="dot"></span>META-WORKFLOW · FOR CLAUDE CODE</div>
+
+  <h1>skill<span class="d">-to-</span>workflow</h1>
+  <div class="tag">Compile any Claude <b>Agent Skill</b> into a multi-agent <b>Workflow</b> — parallel fan-out, adversarial self-verification, typed hand-offs.</div>
+
+  <div class="pipe">
+    <svg width="1136" height="150" viewBox="0 0 1136 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="v" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a63f4"/><stop offset="1" stop-color="#c77dff"/></linearGradient>
+        <linearGradient id="t" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2dd4bf"/><stop offset="1" stop-color="#5eead4"/></linearGradient>
+        <marker id="av" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a07bf0"/></marker>
+        <marker id="at" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2dd4bf"/></marker>
+      </defs>
+
+      <!-- SKILL.md chip -->
+      <g transform="translate(0,49)">
+        <rect x="0" y="0" width="150" height="52" rx="12" fill="#16122b" stroke="#34284f" stroke-width="1.5"/>
+        <circle cx="20" cy="18" r="3.5" fill="#c77dff"/>
+        <text class="mono" x="32" y="22" fill="#c3b3ee" font-size="13" font-family="monospace">SKILL.md</text>
+        <rect x="20" y="32" width="92" height="5" rx="2.5" fill="#4b3d77"/>
+        <rect x="20" y="42" width="64" height="5" rx="2.5" fill="#322a4d"/>
+      </g>
+      <text x="75" y="128" fill="#6f6291" font-size="12" text-anchor="middle" letter-spacing="2" font-family="monospace">ONE AGENT</text>
+
+      <!-- compile arrow -->
+      <line x1="166" y1="75" x2="290" y2="75" stroke="#5a4a8f" stroke-width="2.5" stroke-linecap="round" marker-end="url(#av)"/>
+      <text x="228" y="62" fill="#c77dff" font-size="14" text-anchor="middle" font-weight="700">compile</text>
+
+      <!-- DAG -->
+      <g stroke-linecap="round">
+        <path d="M312,75 C372,75 372,33 432,33"  stroke="#8a63f4" stroke-width="2.5" fill="none"/>
+        <path d="M312,75 C372,75 372,75 432,75"  stroke="#8a63f4" stroke-width="2.5" fill="none"/>
+        <path d="M312,75 C372,75 372,117 432,117" stroke="#8a63f4" stroke-width="2.5" fill="none"/>
+        <path d="M474,33  C534,33 534,75 594,75"  stroke="#c77dff" stroke-width="2.5" fill="none"/>
+        <path d="M474,75  C534,75 534,75 594,75"  stroke="#c77dff" stroke-width="2.5" fill="none"/>
+        <path d="M474,117 C534,117 534,75 594,75" stroke="#c77dff" stroke-width="2.5" fill="none"/>
+        <circle cx="300" cy="75" r="15" fill="#16122b" stroke="url(#v)" stroke-width="2.5"/><circle cx="300" cy="75" r="4.5" fill="#c77dff"/>
+        <circle cx="453" cy="33"  r="15" fill="#16122b" stroke="#a07bf0" stroke-width="2"/>
+        <circle cx="453" cy="75"  r="15" fill="#16122b" stroke="#a07bf0" stroke-width="2"/>
+        <circle cx="453" cy="117" r="15" fill="#16122b" stroke="#a07bf0" stroke-width="2"/>
+        <circle cx="612" cy="75" r="16" fill="#16122b" stroke="url(#v)" stroke-width="2.5"/>
+        <path d="M605,75 l5,5 l9,-11" stroke="#c77dff" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+      </g>
+      <text x="456" y="148" fill="#6f6291" font-size="12" text-anchor="middle" letter-spacing="2" font-family="monospace">FAN-OUT · VERIFY · REDUCE</text>
+
+      <!-- verified arrow -->
+      <line x1="632" y1="75" x2="820" y2="75" stroke="#1f6b62" stroke-width="2.5" stroke-linecap="round" marker-end="url(#at)"/>
+      <text x="726" y="62" fill="#2dd4bf" font-size="14" text-anchor="middle" font-weight="700">verified ✓</text>
+
+      <!-- output chip -->
+      <g transform="translate(840,49)">
+        <rect x="0" y="0" width="186" height="52" rx="12" fill="#15131f" stroke="#2a3f3a" stroke-width="1.5"/>
+        <circle cx="20" cy="18" r="3.5" fill="#2dd4bf"/>
+        <text class="mono" x="32" y="22" fill="#9fd9cf" font-size="12.5" font-family="monospace">audit.workflow.js</text>
+        <rect x="20" y="32" width="120" height="5" rx="2.5" fill="#2f6f5f"/>
+        <rect x="20" y="42" width="80" height="5" rx="2.5" fill="#2c3340"/>
+      </g>
+      <text x="933" y="128" fill="#5b8079" font-size="12" text-anchor="middle" letter-spacing="2" font-family="monospace">MANY AGENTS</text>
+    </svg>
+  </div>
+
+  <div class="footer">
+    <div class="repo">github.com/democra-ai/<span class="s">skill-to-workflow</span></div>
+    <div class="chips">
+      <span class="chip">npx install</span>
+      <span class="chip">zero deps</span>
+      <span class="chip t">MIT</span>
+    </div>
+  </div>
+</body>
+</html>
